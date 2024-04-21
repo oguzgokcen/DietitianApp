@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bindViews();
-        startActivity(AccountActivity.callIntent(this))
         nav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeNav -> replaceFragment(HomeFragment())

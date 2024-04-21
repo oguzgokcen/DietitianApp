@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dieticianapp.domain.ViewState
 import com.example.dieticianapp.model.BaseResponse
+import com.example.dieticianapp.model.ErrorResponse
 import com.example.dieticianapp.model.Login
+import com.example.dieticianapp.model.Register
 import com.example.dieticianapp.model.TokenResponse
 import com.example.dieticianapp.usecase.user.LoginUseCase
 import com.example.dieticianapp.usecase.user.RegisterUseCase
@@ -35,7 +37,7 @@ class AccountViewModel @Inject constructor(
                     ViewState.Success(responseData)
                 }
                 is BaseResponse.Error -> {
-                    ViewState.Error(responseData.message)
+                    ViewState.Error(responseData.error.message.toString())
                 }
             }
         }.onEach { data ->
@@ -43,6 +45,23 @@ class AccountViewModel @Inject constructor(
         }.catch {
             _uiStateLogin.emit(ViewState.Error(it.message.toString()))
         }.launchIn(viewModelScope)  //viewModelScope is a predefined scope that is tied to the lifecycle of the ViewModel. When the ViewModel is cleared, the scope is cancelled automatically.
+    }
+
+    fun setRegister(register: Register) {
+        registerUseCase.execute(register).map {
+            when(val responseData: BaseResponse<TokenResponse> = it) {
+                is BaseResponse.Success -> {
+                    ViewState.Success(responseData)
+                }
+                is BaseResponse.Error -> {
+                    ViewState.Error(responseData.error.message.toString())
+                }
+            }
+        }.onEach { data ->
+            _uiStateLogin.emit(data)
+        }.catch {
+            _uiStateLogin.emit(ViewState.Error(it.message.toString()))
+        }.launchIn(viewModelScope)
     }
 
 

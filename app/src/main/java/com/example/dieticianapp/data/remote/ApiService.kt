@@ -11,7 +11,7 @@ interface ApiService {
     @POST("login")
     fun setLogin(@Body login: Login): Call<TokenResponse>
 
-    @POST("register")
+    @POST("register/dietician")
     fun setRegister(@Body register: Register): Call<TokenResponse>
 
 }

@@ -59,6 +59,8 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     //Datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+    //lottie
+    implementation ("com.airbnb.android:lottie:6.4.0")
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)

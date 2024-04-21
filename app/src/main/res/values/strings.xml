@@ -49,4 +49,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="please_enter_your_name">İsim boş bırakılmaz</string>
+    <string name="please_enter_your_tckn">Lütfen geçerli tc kimlik numarası giriniz</string>
+    <string name="please_enter_your_surname">Soyisim boş bırakılmaz</string>
+    <string name="your_password_must_contain_at_least_one_uppercase_letter_and_a_special_character">Şifrede en az bir büyük harf ve bir özel karakter olmalı</string>
+    <string name="full_name">İsim</string>
+    <string name="second_name">Soyisim\n</string>
+    <string name="tckn">Tc kimlik numarası</string>
+    <string name="password">Şifre</string>
 </resources>

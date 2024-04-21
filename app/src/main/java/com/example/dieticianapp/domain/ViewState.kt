@@ -1,5 +1,7 @@
 package com.example.dieticianapp.domain
 
+import com.example.dieticianapp.model.ErrorResponse
+
 sealed class ViewState<out T> {
 
     object Loading: ViewState<Nothing>()

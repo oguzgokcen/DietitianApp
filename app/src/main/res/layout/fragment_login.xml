@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="0.3"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:layout_weight="0.3">
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -60,7 +55,7 @@
                 app:srcCompat="@drawable/login_background" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvCaption"
                 android:layout_width="251dp"
                 android:layout_height="51dp"
                 android:layout_marginTop="56dp"
@@ -73,7 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/login_img" />
 
             <EditText
-                android:id="@+id/tvTckn"
+                android:id="@+id/etTckn"
                 android:layout_width="290dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="60dp"
@@ -90,10 +85,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCaption" />
 
             <EditText
-                android:id="@+id/tvPassword"
+                android:id="@+id/etPassword"
                 android:layout_width="290dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="60dp"
@@ -110,7 +105,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTckn" />
+                app:layout_constraintTop_toBottomOf="@+id/etTckn" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btLogin"
@@ -126,7 +121,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -140,7 +135,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.186"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCaption" />
 
             <TextView
                 android:id="@+id/tvForgetPassword"
@@ -155,7 +150,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
             <TextView
                 android:id="@+id/btRegister"
@@ -177,4 +172,9 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <com.example.dieticianapp.presentation.custom.CustomLoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>

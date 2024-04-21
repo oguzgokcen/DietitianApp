@@ -1,28 +1,30 @@
 package com.example.dieticianapp
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dieticianapp.data.local.DataStoreManager
 import com.example.dieticianapp.databinding.ActivitySplashBinding
 import com.wada811.viewbindingktx.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    val binding by viewBinding(ActivitySplashBinding::bind)
     @Inject
     lateinit var dataStoreManager: DataStoreManager
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        CoroutineScope(Dispatchers.Main).launch {
+
+            getUserId()
+        }
     }
     private fun getUserId() {
         lifecycleScope.launch {

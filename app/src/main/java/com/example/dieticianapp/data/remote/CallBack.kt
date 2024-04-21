@@ -1,6 +1,8 @@
 package com.example.dieticianapp.data.remote
 
 import com.example.dieticianapp.model.BaseResponse
+import com.example.dieticianapp.model.ErrorResponse
+import com.google.gson.Gson
 import kotlinx.coroutines.channels.SendChannel
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,16 +17,21 @@ class CallBack<T>(private val responseChannel: SendChannel<BaseResponse<T>>): Ca
             if(body != null) {
                 responseChannel.trySend(BaseResponse.Success(body))
             }else {
-                responseChannel.trySend(BaseResponse.Error(message = "Body is null"))
+                responseChannel.trySend(BaseResponse.Error(ErrorResponse(0, "Body is Null")))
             }
         } else {
-            val errorBody = response.errorBody().toString()
-            responseChannel.trySend(BaseResponse.Error(errorBody))
+            val errorBody = response.errorBody()
+            val errorResponse = Gson().fromJson(errorBody?.string(), ErrorResponse::class.java)
+            if (errorResponse == null) {
+                responseChannel.trySend(BaseResponse.Error(ErrorResponse(0, "Bilinmeyen bir hata oluştu.")))
+                return
+            }
+            responseChannel.trySend(BaseResponse.Error(errorResponse))
         }
     }
 
     override fun onFailure(call: Call<T>, t: Throwable) {
-       responseChannel.trySend(BaseResponse.Error(message = t.localizedMessage))
+       responseChannel.trySend(BaseResponse.Error(ErrorResponse(message = t.localizedMessage)))
     }
 
 
