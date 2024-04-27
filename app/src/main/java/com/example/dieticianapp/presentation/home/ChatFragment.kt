@@ -1,4 +1,4 @@
-package com.example.dieticianapp
+package com.example.dieticianapp.presentation.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,10 +9,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dieticianapp.R
 import com.example.loginpage.adapters.MessageAdapter
 import com.example.loginpage.model.Message
 
-class ChatFragment : Fragment() {
+class ChatFragment : Fragment(R.layout.fragment_chat) {
     private lateinit var messageRView:RecyclerView
     private lateinit var messageBox: EditText
     private lateinit var sendButton:ImageView

@@ -1,45 +1,39 @@
-package com.example.dieticianapp.presentation.account
+package com.example.dieticianapp.presentation.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.example.dieticianapp.presentation.home.MainActivity
 import com.example.dieticianapp.R
 import com.example.dieticianapp.data.local.DataStoreManager
-import com.example.dieticianapp.databinding.FragmentLoginBinding
-import com.example.dieticianapp.model.BaseResponse
-import com.example.dieticianapp.model.Login
+import com.example.dieticianapp.databinding.FragmentHomeBinding
+import com.example.dieticianapp.databinding.FragmentPatientsBinding
 import com.example.dieticianapp.domain.ViewState
+import com.example.dieticianapp.model.BaseResponse
+import com.example.dieticianapp.model.Patient
 import com.wada811.viewbindingktx.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(R.layout.fragment_login) {
-    private val binding by this.viewBinding(FragmentLoginBinding::bind)
-    private val viewModel: AccountViewModel by viewModels()  //by ile birkere oluşturulur ve her seferinde çağrılır.
+class PatientsFragment : Fragment(R.layout.fragment_patients) {
+    private val binding by this.viewBinding(FragmentPatientsBinding::bind)
+    private val viewModel: HomeViewModel by viewModels()
     @Inject
     lateinit var dataStoreManager: DataStoreManager
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getPatients()
         initObserver()
-        initListener()
     }
 
-    private fun initListener() = with(binding) {
-        btLogin.setOnClickListener {
-            binding.loadingView.visibility = View.VISIBLE
-            viewModel.setLogin(Login(binding.etTckn.text.toString(), binding.etPassword.text.toString()))
-        }
-        btRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
+    private fun initListener() {
+        TODO("Not yet implemented")
     }
 
     private fun initObserver() = with(viewModel){
@@ -51,8 +45,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             val response = viewState.result as BaseResponse.Success
                             binding.loadingView.visibility = View.GONE
                             Log.v("ViewState.Success", response.data.toString())
-                            dataStoreManager.saveToken(response.data.accessToken)
-                            startActivity(MainActivity.callIntent(requireContext()))
+                            val patientList = response.data
+
                         }
 
                         is ViewState.Error -> {
@@ -67,7 +61,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                 }
         }
-
     }
+
 
 }

@@ -57,4 +57,5 @@
     <string name="second_name">Soyisim\n</string>
     <string name="tckn">Tc kimlik numarası</string>
     <string name="password">Şifre</string>
+    <string name="patientsNavBar">Patients</string>
 </resources>
