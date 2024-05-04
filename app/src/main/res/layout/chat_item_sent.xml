@@ -14,10 +14,11 @@
 
         <TextView
             android:id="@+id/sentText"
-            android:layout_width="185dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
             android:background="@drawable/chatmessage_background"
-            android:gravity="center"
+            android:gravity="left"
             android:padding="10dp"
             android:text="TextView"
             android:textColor="@color/white" />

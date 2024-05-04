@@ -172,7 +172,7 @@
 
     </LinearLayout>
 
-    <com.example.dieticianapp.presentation.custom.CustomLoadingView
+    <com.example.dietitianapp.presentation.custom.CustomLoadingView
         android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

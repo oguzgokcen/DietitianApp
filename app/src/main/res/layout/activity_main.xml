@@ -35,16 +35,21 @@
 
         <!-- Note: A RecyclerView can also be used -->
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navController"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1000"
-        android:layout_marginBottom="0dp"
-        app:navGraph="@navigation/nav_home"/>
+        android:layout_weight="1"
+        android:id="@+id/swipe" >
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navController"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1000"
+            android:layout_marginBottom="0dp"
+            app:navGraph="@navigation/nav_home"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

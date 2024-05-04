@@ -58,4 +58,6 @@
     <string name="tckn">Tc kimlik numarası</string>
     <string name="password">Şifre</string>
     <string name="patientsNavBar">Patients</string>
+    <string name="search_patient">Search Patient</string>
+    <string name="total_clients_default">Total Clients: 0</string>
 </resources>

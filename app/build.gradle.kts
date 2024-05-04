@@ -3,10 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.dieticianapp"
+    namespace = "com.example.dietitianapp"
     compileSdk = 34
 
     defaultConfig {
@@ -54,6 +55,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     //Hilt
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation(libs.firebase.firestore.ktx)
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     //converter-gson
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -61,6 +63,10 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     //lottie
     implementation ("com.airbnb.android:lottie:6.4.0")
+    //swipe refresh
+    implementation(libs.androidx.swiperefreshlayout)
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
