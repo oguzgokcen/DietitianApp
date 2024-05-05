@@ -36,7 +36,7 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
     val activity:MainActivity by lazy {
         requireActivity() as MainActivity
     }
-    lateinit var patientList:List<Patient>
+    private var patientList:List<Patient> = listOf()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addPatientBinding = binding.cvAddPatient.binding

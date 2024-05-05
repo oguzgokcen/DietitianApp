@@ -1,5 +1,9 @@
 package com.example.loginpage.model
 
-import java.util.Date
+import com.google.firebase.Timestamp
 
-data class Message(val id:String,val message:String?, val recieved:Boolean?,val timestamp: Date?)
+data class Message(
+    val id:String,
+    val message:String?, val recieved:Boolean?,
+    val timestamp: Timestamp
+)

@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.dieticianapp"
+        applicationId = "com.example.dietitianapp"
         minSdk = 27
         targetSdk = 34
         versionCode = 1

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dietitianapp.R
 import com.example.loginpage.model.Message
 
-class MessageAdapter(val context: Context, val messageList:ArrayList<Message>):
+class MessageAdapter(val context: Context, val messageList:List<Message>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val ITEM_RECEIVE = 1
