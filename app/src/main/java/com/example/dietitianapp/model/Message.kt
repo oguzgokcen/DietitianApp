@@ -4,6 +4,6 @@ import com.google.firebase.Timestamp
 
 data class Message(
     val id:String,
-    val message:String?, val recieved:Boolean?,
+    val text:String?, val received:Boolean?,
     val timestamp: Timestamp
 )

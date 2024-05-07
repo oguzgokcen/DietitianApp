@@ -19,6 +19,7 @@ import com.example.dietitianapp.databinding.ItemPatientBinding
 import com.example.dietitianapp.domain.ViewState
 import com.example.dietitianapp.model.BaseResponse
 import com.example.dietitianapp.model.Patient
+import com.example.dietitianapp.presentation.Detail.DetailActivity
 import com.example.dietitianapp.presentation.adapter.SingleRecylerAdapter
 import com.wada811.viewbindingktx.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -138,6 +139,12 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
                 tvProfileImage.text = patient.firstName[0].toString()
                 tvPatientName.text = patient.firstName + " " + patient.lastName
                 tvPatientInfo.text = patient.id.toString()
+
+                cvCardLayout.setOnClickListener {
+                    val intent=DetailActivity.callIntent(requireContext())
+                    intent.putExtra("patientId", patient.id.toString())
+                    startActivity(intent)
+                }
             }
         }
     )

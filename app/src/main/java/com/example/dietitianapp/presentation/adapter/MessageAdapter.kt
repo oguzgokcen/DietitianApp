@@ -11,7 +11,6 @@ import com.example.loginpage.model.Message
 
 class MessageAdapter(val context: Context, val messageList:List<Message>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     val ITEM_RECEIVE = 1
     val ITEM_SENT = 2
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,17 +32,17 @@ class MessageAdapter(val context: Context, val messageList:List<Message>):
         if(holder.javaClass == SentViewHolder::class.java){
             // do the stuff for sent view holder
             val viewHolder = holder as SentViewHolder
-            holder.sentMessage.text = currentMessage.message
+            holder.sentMessage.text = currentMessage.text
         }else{
             // do stuff for recieve view holder
             val viewHolder =holder as RecieveViewHolder
-            holder.recieveMessage.text = currentMessage.message
+            holder.recieveMessage.text = currentMessage.text
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         val currentMessage = messageList[position]
-        return if(currentMessage.recieved == true){
+        return if(currentMessage.received == true){
             ITEM_SENT
         }else{
             ITEM_RECEIVE

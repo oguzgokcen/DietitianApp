@@ -5,7 +5,6 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
 }
-
 android {
     namespace = "com.example.dietitianapp"
     compileSdk = 34
