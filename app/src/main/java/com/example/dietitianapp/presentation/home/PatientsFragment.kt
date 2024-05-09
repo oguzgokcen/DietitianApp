@@ -72,6 +72,7 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
         viewLifecycleOwner.lifecycleScope.launch {
             uiStateListPatients.flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { viewState ->
+                    activity.binding.swipe.isRefreshing = false
                     when (viewState) {
                         is ViewState.Success -> {
                             with(binding) {
@@ -142,7 +143,7 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
 
                 cvCardLayout.setOnClickListener {
                     val intent=DetailActivity.callIntent(requireContext())
-                    intent.putExtra("patientId", patient.id.toString())
+                    intent.putExtra("patient", patient)
                     startActivity(intent)
                 }
             }
@@ -152,7 +153,6 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
     override fun onRefresh() {
         activity.binding.swipe.isRefreshing = true
         viewModel.getPatients()
-        activity.binding.swipe.isRefreshing = false
     }
     private fun textChanger() {
         mTextWatcher = object : TextWatcher {

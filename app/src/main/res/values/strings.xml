@@ -60,4 +60,12 @@
     <string name="patientsNavBar">Patients</string>
     <string name="search_patient">Search Patient</string>
     <string name="total_clients_default">Total Clients: 0</string>
+    <string name="intakeCal">"Alınan Kalori: "</string>
+    <string name="carbonhydrate">"Karbonhidrat: "</string>
+    <string name="kilocalorie">" kcal"</string>
+    <string name="protein">Protein</string>
+    <string name="fat">"Yağ: "</string>
+    <string name="totalCal">"Toplam Kalori: "</string>
+    <string name="add_calorie">Yeni kalori miktarını giriniz</string>
+    <string name="add_calorie_hint">Kalori miktarı : (kcal)</string>
 </resources>

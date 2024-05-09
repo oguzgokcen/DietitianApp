@@ -40,6 +40,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         with(binding){
             rvChat.layoutManager = LinearLayoutManager(requireContext())
             rvChat.adapter = messageAdapter
+            rvChat.scrollToPosition(messageAdapter.itemCount -1)
             btnSend.setOnClickListener{
                 val message = etChat.text.toString()
                 if(message.isNotEmpty()){
@@ -47,6 +48,7 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
                     if (!result){
                         Toast.makeText(requireContext(),"Mesaj Gönderilemedi",Toast.LENGTH_SHORT).show()
                     }
+                    rvChat.scrollToPosition(messageAdapter.itemCount -1)
                 }
                 etChat.setText("")
                 try {
@@ -62,7 +64,9 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
 
     fun initObserver() {
         val messages = Observer<List<Message>> {
-            binding.rvChat.adapter = MessageAdapter(requireContext(), it.toList().sortedBy { it.timestamp })
+            val adapter =MessageAdapter(requireContext(), it.toList().sortedBy { it.timestamp })
+            binding.rvChat.adapter = adapter
+            binding.rvChat.scrollToPosition(adapter.itemCount -1)
         }
         viewModel.messageList.observe(viewLifecycleOwner, messages)
 

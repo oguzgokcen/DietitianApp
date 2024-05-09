@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    public val binding by viewBinding(ActivityMainBinding::bind)
+    val binding by viewBinding(ActivityMainBinding::bind)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

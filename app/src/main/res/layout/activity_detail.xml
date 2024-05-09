@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:text=""
             android:gravity="center"
-            android:textSize="40sp"
+            android:textSize="60sp"
             android:background="@drawable/background_profile_img"
             android:textColor="@color/bg_primary_subtle"
             android:fontFamily="@font/arvo"/>
@@ -94,7 +94,7 @@
             android:id="@+id/tv_intake_cal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Intake CAL: 2000 kcal"
+            android:text="@string/intakeCal"
             android:textSize="20sp"
             android:layout_margin="5dp"
             android:layout_gravity="center"/>
@@ -183,7 +183,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_add_patient"
+        android:id="@+id/btn_add_calorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Yeni kalori girişi"
@@ -191,4 +191,14 @@
         android:layout_below="@id/ll_total"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"/>
+    <com.example.dietitianapp.presentation.custom.AddPatientView
+        android:id="@+id/cv_add_patient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+    <com.example.dietitianapp.presentation.custom.CustomLoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 </RelativeLayout>
