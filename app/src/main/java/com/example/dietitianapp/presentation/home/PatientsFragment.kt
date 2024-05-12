@@ -2,6 +2,7 @@ package com.example.dietitianapp.presentation.home
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -55,6 +56,8 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
             }
         }
         with(addPatientBinding){
+            etNewPatient.inputType= android.text.InputType.TYPE_CLASS_NUMBER
+            etNewPatient.filters = arrayOf(InputFilter.LengthFilter(11))
             btnAddPatientAdd.setOnClickListener {
                 val patientId = etNewPatient.text.toString()
                 viewModel.savePatient(patientId)
@@ -81,10 +84,15 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
                                 Log.v("ViewState.Success", response.data.toString())
                                 patientList = response.data
                                 patientListAdapter.data = patientList
-                                rvPatient.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                                rvPatient.layoutManager = LinearLayoutManager(
+                                    context,
+                                    LinearLayoutManager.VERTICAL,
+                                    false
+                                )
                                 rvPatient.adapter = patientListAdapter
                             }
                         }
+
                         is ViewState.Error -> {
                             val responseError = viewState.error
                             binding.loadingView.visibility = View.GONE
@@ -108,16 +116,19 @@ class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayou
                         }
                     }
                 }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
             uiStateSavePatient.flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { viewState ->
                     when (viewState) {
                         is ViewState.Success -> {
                             val response = viewState.result as BaseResponse.Success
                             viewModel.getPatients()
-                            Log.v("ViewState.Success", response.data.toString())
+                            Log.v("ViewState.Success","Is Success Triggered")
                         }
                         is ViewState.Error -> {
                             val responseError = viewState.error
+                            viewModel.getPatients()
                             Log.v("ViewState.Error", responseError)
                         }
                         is ViewState.Loading -> {

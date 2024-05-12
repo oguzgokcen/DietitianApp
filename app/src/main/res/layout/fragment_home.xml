@@ -3,4 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.HomeFragment" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.home.HomeFragment"
+    android:background="@color/bg_primary_subtle">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_patient_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        app:cardCornerRadius="12dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/colorPrimary"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_patient_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Güncel Hasta Sayısı: "
+                    android:textColor="@color/text_secondary"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:paddingStart="10dp"
+                    android:textSize="30dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="10dp"/>
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward"
+                android:background="@android:color/transparent"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        app:cardCornerRadius="12dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/colorPrimary"
+        android:background="@color/white"
+        android:layout_below="@id/cv_patient_count">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_patient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yeni mesaj: "
+                    android:textColor="@color/text_secondary"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:paddingStart="10dp"
+                    android:textSize="30dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="10dp"/>
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

@@ -22,6 +22,7 @@ class HomeViewModel @Inject constructor(
     private val listPatientsUseCase: ListPatientsUseCase,
     private val savePatientUseCase: SavePatientUseCase
 ) : ViewModel() {
+
     private val _uiStateListPatients: MutableSharedFlow<ViewState<BaseResponse<List<Patient>>>> =
         MutableSharedFlow()
     val uiStateListPatients = _uiStateListPatients.asSharedFlow()
