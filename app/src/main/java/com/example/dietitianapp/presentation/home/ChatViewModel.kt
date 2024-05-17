@@ -12,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.Calendar
 import java.util.Date
 import java.util.UUID
 import javax.inject.Inject
@@ -47,7 +48,7 @@ class ChatViewModel @Inject constructor():ViewModel() {
             }
     }
     fun addMessage(messageText: String):Boolean{
-        val message = Message(UUID.randomUUID().toString(),messageText,true, Timestamp(Date()))
+        val message = Message(UUID.randomUUID().toString(),messageText,true, Timestamp(Calendar.getInstance().time))
         var isSuccess = true
         db.collection("messages")
             .add(message)

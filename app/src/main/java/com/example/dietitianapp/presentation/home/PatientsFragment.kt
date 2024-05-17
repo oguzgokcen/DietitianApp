@@ -7,9 +7,11 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dietitianapp.R
@@ -30,7 +32,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PatientsFragment : Fragment(R.layout.fragment_patients), SwipeRefreshLayout.OnRefreshListener{
     private val binding by this.viewBinding(FragmentPatientsBinding::bind)
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
     @Inject
     lateinit var dataStoreManager: DataStoreManager
     lateinit var addPatientBinding: AddPatientViewBinding

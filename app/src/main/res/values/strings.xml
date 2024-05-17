@@ -68,4 +68,7 @@
     <string name="totalCal">"Toplam Kalori: "</string>
     <string name="add_calorie">Yeni kalori miktarını giriniz</string>
     <string name="add_calorie_hint">Kalori miktarı : (kcal)</string>
+    <string name="current_patient_count">Güncel Hasta Sayısı:</string>
+    <string name="new_message_count">Yeni mesaj:</string>
+    <string name="gram">gram</string>
 </resources>

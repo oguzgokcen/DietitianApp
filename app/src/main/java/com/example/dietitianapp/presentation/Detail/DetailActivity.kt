@@ -93,19 +93,19 @@ class DetailActivity : AppCompatActivity() {
                                 tvIntakeCarbonhydrate.text= buildString {
                                     append(resources.getString(R.string.carbonhydrate))
                                     append(String.format("%.2f",data.intakeCarbohydrate))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
 
                                 tvIntakeFat.text= buildString {
                                     append(resources.getString(R.string.fat))
                                     append(String.format("%.2f",data.intakeFat))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
 
                                 tvIntakeProtein.text= buildString {
                                     append(resources.getString(R.string.protein))
                                     append(String.format("%.2f",data.intakeProtein))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
                                 //total
                                 tvTotalCal.text= buildString {
@@ -116,24 +116,26 @@ class DetailActivity : AppCompatActivity() {
                                 tvTotalCarbonhydrate.text= buildString {
                                     append(resources.getString(R.string.carbonhydrate))
                                     append(String.format("%.2f",data.totalCarbohydrate))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
 
                                 tvTotalFat.text= buildString {
                                     append(resources.getString(R.string.fat))
                                     append(String.format("%.2f",data.totalFat))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
 
                                 tvTotalProtein.text= buildString {
                                     append(resources.getString(R.string.protein))
                                     append(String.format("%.2f",data.totalProtein))
-                                    append(resources.getString(R.string.kilocalorie))
+                                    append(resources.getString(R.string.gram))
                                 }
                             }
                         }
                         is ViewState.Error ->{
                             Toast.makeText(this@DetailActivity,"Veri Alınamadı",Toast.LENGTH_LONG).show()
+                            binding.loadingView.visibility = View.GONE
+
                         }
                         is ViewState.Loading ->{
                             binding.loadingView.visibility = View.VISIBLE
@@ -146,9 +148,8 @@ class DetailActivity : AppCompatActivity() {
                 .collect { viewState ->
                     when (viewState) {
                         is ViewState.Success -> {
-                            val response = viewState.result as BaseResponse.Success
-                            Log.v("ViewState.Success", response.data.toString())
                             Toast.makeText(this@DetailActivity,"Kalori Eklendi",Toast.LENGTH_LONG).show()
+                            binding.loadingView.visibility = View.GONE
 
                         }
                         is ViewState.Error ->{

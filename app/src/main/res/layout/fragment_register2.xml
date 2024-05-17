@@ -164,7 +164,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="60dp"
             android:background="@drawable/background_login_btn"
-            android:text="Giriş Yap"
+            android:text="Kayıt Ol"
             android:textAllCaps="false"
             android:textColor="#C8BDCD"
             android:textSize="24sp"

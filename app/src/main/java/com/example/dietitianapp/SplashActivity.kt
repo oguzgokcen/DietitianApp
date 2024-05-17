@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         CoroutineScope(Dispatchers.Main).launch {
-            //dataStoreManager.deleteAccessToken()  //tobe deleted
+            dataStoreManager.deleteAccessToken()  //tobe deleted
             delay(SPLASH_TIME)
             getUserId()
         }

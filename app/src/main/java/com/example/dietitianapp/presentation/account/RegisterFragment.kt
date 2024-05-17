@@ -10,16 +10,22 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.dietitianapp.R
+import com.example.dietitianapp.data.local.DataStoreManager
 import com.example.dietitianapp.databinding.FragmentRegister2Binding
 import com.example.dietitianapp.domain.ViewState
 import com.example.dietitianapp.model.BaseResponse
 import com.example.dietitianapp.model.Register
+import com.example.dietitianapp.presentation.home.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private val viewModel: AccountViewModel by viewModels()
     private lateinit var binding: FragmentRegister2Binding
+    @Inject
+    lateinit var dataStoreManager: DataStoreManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentRegister2Binding.inflate(layoutInflater)
@@ -101,6 +107,9 @@ class RegisterFragment : Fragment() {
                     when (viewState) {
                         is ViewState.Success -> {
                             val response = viewState.result as BaseResponse.Success
+                            Log.v("ViewState.Success", response.data.toString())
+                            dataStoreManager.saveToken(response.data.accessToken)
+                            startActivity(MainActivity.callIntent(requireContext()))
                             Log.d("CreateAccountFragment", response.data.toString())
                         }
 
